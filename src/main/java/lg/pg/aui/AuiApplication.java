@@ -10,4 +10,4 @@ public class AuiApplication {
 		SpringApplication.run(AuiApplication.class, args);
 	}
 
-	}
+}
