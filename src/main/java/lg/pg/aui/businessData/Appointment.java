@@ -1,4 +1,4 @@
-package lg.pg.aui;
+package lg.pg.aui.businessData;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -18,7 +18,7 @@ import java.util.UUID;
 public class Appointment implements Serializable {
 
     @Id
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "appointment_id", nullable = false, unique = true)
     private UUID id;
 
     @Column(name = "patient_name", nullable = false)

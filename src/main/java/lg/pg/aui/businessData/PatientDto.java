@@ -1,4 +1,4 @@
-package lg.pg.aui;
+package lg.pg.aui.businessData;
 
 import lombok.*;
 

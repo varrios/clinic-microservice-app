@@ -1,4 +1,4 @@
-package lg.pg.aui;
+package lg.pg.aui.businessData;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,7 +11,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
-@EqualsAndHashCode(exclude = "appointments")
+@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 
@@ -20,24 +20,20 @@ import java.util.UUID;
 public class Doctor implements Serializable {
 
     @Id
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "doctor_id", nullable = false, unique = true)
     private UUID id;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "full_name", nullable = false)
+    private String fullName;
 
     @Column(name = "specialization", nullable = false)
     private String specialization;
 
-    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "assignedDoctor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<Appointment> appointments;
 
-
-    @Override
-    public String toString() {
-        return "Doctor - " + name + "\n" +
-                "Specialization: " + specialization + "\n";
-    }
 
 
 }
