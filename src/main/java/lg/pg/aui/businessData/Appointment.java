@@ -12,7 +12,7 @@ import java.util.UUID;
 @EqualsAndHashCode(exclude = "assignedDoctor")
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-
+@ToString
 @Entity
 @Table(name = "appointments")
 public class Appointment implements Serializable {
@@ -29,13 +29,9 @@ public class Appointment implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "doctor_id", nullable = false)
+    @ToString.Exclude
     private Doctor assignedDoctor;
 
-    @Override
-    public String toString() {
-        return "Appointment - " + patientName + "\n" +
-                "Age: " + patientAge + "\n";
-    }
 
 
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class AppointmentService {
@@ -32,5 +33,9 @@ public class AppointmentService {
 
     public void create(Appointment appointment) {
         appointmentRepository.save(appointment);
+    }
+
+    public void delete(UUID uuid) {
+        appointmentRepository.deleteById(uuid);
     }
 }

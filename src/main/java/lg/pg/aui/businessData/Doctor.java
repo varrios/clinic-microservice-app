@@ -14,7 +14,7 @@ import java.util.UUID;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-
+@ToString
 @Entity
 @Table(name = "doctors")
 public class Doctor implements Serializable {

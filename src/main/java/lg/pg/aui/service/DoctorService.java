@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class DoctorService {
@@ -27,5 +28,9 @@ public class DoctorService {
 
     public void create(Doctor doctor) {
         doctorRepository.save(doctor);
+    }
+
+    public void delete(UUID id) {
+        doctorRepository.deleteById(id);
     }
 }
