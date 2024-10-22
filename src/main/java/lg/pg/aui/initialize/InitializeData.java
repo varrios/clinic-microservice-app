@@ -1,7 +1,7 @@
 package lg.pg.aui.initialize;
 
-import lg.pg.aui.businessData.Appointment;
-import lg.pg.aui.businessData.Doctor;
+import lg.pg.aui.entities.Appointment;
+import lg.pg.aui.entities.Doctor;
 import lg.pg.aui.service.AppointmentService;
 import lg.pg.aui.service.DoctorService;
 import lombok.SneakyThrows;

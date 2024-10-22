@@ -1,4 +1,4 @@
-package lg.pg.aui.businessData;
+package lg.pg.aui.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
