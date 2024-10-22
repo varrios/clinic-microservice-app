@@ -1,4 +1,4 @@
-package lg.pg.aui;
+package lg.pg.aui.cmd;
 
 import lg.pg.aui.entities.Appointment;
 import lg.pg.aui.entities.Doctor;
@@ -54,6 +54,12 @@ public class ConsoleRunner implements CommandLineRunner {
                 case "delete appointment":
                     deleteAppointment();
                     break;
+                case "search appointment":
+                    searchAppointment();
+                    break;
+                case "search doctor":
+                    searchDoctor();
+                    break;
                 case "exit":
                     running = false;
                     System.out.println("Application stopped.");
@@ -77,6 +83,8 @@ public class ConsoleRunner implements CommandLineRunner {
         System.out.println("delete doctor - delete existing doctor");
         System.out.println("add appointment - add new appointment");
         System.out.println("delete appointment - delete existing appointment");
+        System.out.println("search appointment - search for an appointment");
+        System.out.println("search doctor - search for a doctor");
         System.out.println("exit - stop the application");
     }
 
@@ -107,12 +115,18 @@ public class ConsoleRunner implements CommandLineRunner {
     }
 
     public void deleteDoctor(){
-        System.out.println("Enter doctor's ID: ");
+        System.out.println("Available doctors: ");
+        doctorService.findAll().forEach(doctor ->
+            System.out.println(doctor.getId() + ": " + doctor.getFullName() + " (" + doctor.getSpecialization() + ")")
+        );
+
+        System.out.println("Enter doctor's ID to delete: ");
         String id = scanner.nextLine().trim();
         try {
             doctorService.delete(UUID.fromString(id));
         } catch (Exception e) {
             System.out.println("Error occurred while deleting doctor: " + e.getMessage());
+            return;
         }
         System.out.println("Doctor deleted successfully.");
     }
@@ -146,11 +160,17 @@ public class ConsoleRunner implements CommandLineRunner {
                 .build());
         } catch (Exception e) {
             System.out.println("Error occurred while adding appointment: " + e.getMessage());
+            return;
         }
         System.out.println("Appointment added successfully.");
     }
 
     public void deleteAppointment() {
+        System.out.println("Available appointments: ");
+        appointmentService.findAll().forEach(appointment ->
+            System.out.println(appointment.getId() + ": " + appointment.getPatientName() + " (" + appointment.getAssignedDoctor().getFullName() + ")")
+        );
+
         System.out.println("Enter appointment ID: ");
         String id = scanner.nextLine().trim();
         try {
@@ -160,4 +180,22 @@ public class ConsoleRunner implements CommandLineRunner {
             System.out.println("Error occurred while deleting appointment: " + e.getMessage());
         }
     }
+
+    public void searchAppointment() {
+        System.out.println("Patients' names: ");
+        appointmentService.findAll().forEach(appointment -> System.out.println(appointment.getPatientName()));
+        System.out.println("Enter patient's name: ");
+        String patientName = scanner.nextLine().trim();
+        appointmentService.findByPatientName(patientName).forEach(System.out::println);
+        System.out.println("finished.");
+    }
+
+    public void searchDoctor() {
+        System.out.println("Enter doctor's specialization: ");
+        String specialization = scanner.nextLine().trim();
+
+        doctorService.findBySpecialization(specialization).forEach(System.out::println);
+        System.out.println("finished.");
+    }
+
 }

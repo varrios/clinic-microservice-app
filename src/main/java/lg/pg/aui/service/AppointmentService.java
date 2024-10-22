@@ -31,6 +31,10 @@ public class AppointmentService {
         return appointmentRepository.findAppointmentsByAssignedDoctor(assignedDoctor);
     }
 
+    public List<Appointment> findByPatientName(String patientName) {
+        return appointmentRepository.findAppointmentByPatientName(patientName);
+    }
+
     public void create(Appointment appointment) {
         appointmentRepository.save(appointment);
     }

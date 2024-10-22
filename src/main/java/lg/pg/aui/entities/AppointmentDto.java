@@ -5,7 +5,7 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class PatientDto {
+public class AppointmentDto {
 
     private String patientName;
     private int patientAge;

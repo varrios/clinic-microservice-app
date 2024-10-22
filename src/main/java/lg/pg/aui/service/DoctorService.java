@@ -26,6 +26,7 @@ public class DoctorService {
         return doctorRepository.findBySpecialization(specialization);
     }
 
+
     public void create(Doctor doctor) {
         doctorRepository.save(doctor);
     }
