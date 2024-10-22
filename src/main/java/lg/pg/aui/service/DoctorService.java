@@ -1,6 +1,6 @@
 package lg.pg.aui.service;
 
-import lg.pg.aui.businessData.Doctor;
+import lg.pg.aui.entities.Doctor;
 import lg.pg.aui.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

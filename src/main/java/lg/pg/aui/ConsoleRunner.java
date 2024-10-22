@@ -1,7 +1,7 @@
 package lg.pg.aui;
 
-import lg.pg.aui.businessData.Appointment;
-import lg.pg.aui.businessData.Doctor;
+import lg.pg.aui.entities.Appointment;
+import lg.pg.aui.entities.Doctor;
 import lg.pg.aui.service.AppointmentService;
 import lg.pg.aui.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
