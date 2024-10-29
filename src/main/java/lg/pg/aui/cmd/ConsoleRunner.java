@@ -1,9 +1,9 @@
 package lg.pg.aui.cmd;
 
-import lg.pg.aui.entities.Appointment;
-import lg.pg.aui.entities.Doctor;
-import lg.pg.aui.service.AppointmentService;
-import lg.pg.aui.service.DoctorService;
+import lg.pg.aui.appointment.entity.Appointment;
+import lg.pg.aui.appointment.entity.Doctor;
+import lg.pg.aui.appointment.service.impl.AppointmentDefaultService;
+import lg.pg.aui.appointment.service.impl.DoctorDefaultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -16,10 +16,10 @@ import java.util.UUID;
 public class ConsoleRunner implements CommandLineRunner {
 
     @Autowired
-    private AppointmentService appointmentService;
+    private AppointmentDefaultService appointmentDefaultService;
 
     @Autowired
-    private DoctorService doctorService;
+    private DoctorDefaultService doctorDefaultService;
 
     private final Scanner scanner = new Scanner(System.in);
 
@@ -89,11 +89,11 @@ public class ConsoleRunner implements CommandLineRunner {
     }
 
     public void printDoctors() {
-        doctorService.findAll().forEach(System.out::println);
+        doctorDefaultService.findAll().forEach(System.out::println);
     }
 
     public void printAppointments() {
-        appointmentService.findAll().forEach(System.out::println);
+        appointmentDefaultService.findAll().forEach(System.out::println);
     }
 
     public void addDoctor() {
@@ -102,7 +102,7 @@ public class ConsoleRunner implements CommandLineRunner {
         System.out.println("Enter doctor's specialization: ");
         String specialization = scanner.nextLine().trim();
         try {
-            doctorService.create(Doctor.builder()
+            doctorDefaultService.create(Doctor.builder()
                     .id(UUID.randomUUID())
                     .fullName(fullName)
                     .specialization(specialization)
@@ -116,14 +116,14 @@ public class ConsoleRunner implements CommandLineRunner {
 
     public void deleteDoctor(){
         System.out.println("Available doctors: ");
-        doctorService.findAll().forEach(doctor ->
+        doctorDefaultService.findAll().forEach(doctor ->
             System.out.println(doctor.getId() + ": " + doctor.getFullName() + " (" + doctor.getSpecialization() + ")")
         );
 
         System.out.println("Enter doctor's ID to delete: ");
         String id = scanner.nextLine().trim();
         try {
-            doctorService.delete(UUID.fromString(id));
+            doctorDefaultService.delete(UUID.fromString(id));
         } catch (Exception e) {
             System.out.println("Error occurred while deleting doctor: " + e.getMessage());
             return;
@@ -139,20 +139,20 @@ public class ConsoleRunner implements CommandLineRunner {
         int patientAge = Integer.parseInt(scanner.nextLine().trim());
 
         System.out.println("Available doctors: ");
-        doctorService.findAll().forEach(doctor ->
+        doctorDefaultService.findAll().forEach(doctor ->
             System.out.println(doctor.getId() + ": " + doctor.getFullName() + " (" + doctor.getSpecialization() + ")")
         );
 
         System.out.println("Enter doctor's ID: ");
         UUID doctorId = UUID.fromString(scanner.nextLine().trim());
 
-        Doctor assignedDoctor = doctorService.findAll().stream()
+        Doctor assignedDoctor = doctorDefaultService.findAll().stream()
             .filter(doctor -> doctor.getId().equals(doctorId))
             .findFirst()
             .orElseThrow(() -> new IllegalArgumentException("Invalid doctor ID"));
 
         try {
-            appointmentService.create(Appointment.builder()
+            appointmentDefaultService.create(Appointment.builder()
                 .id(UUID.randomUUID())
                 .patientName(patientName)
                 .patientAge(patientAge)
@@ -167,14 +167,14 @@ public class ConsoleRunner implements CommandLineRunner {
 
     public void deleteAppointment() {
         System.out.println("Available appointments: ");
-        appointmentService.findAll().forEach(appointment ->
+        appointmentDefaultService.findAll().forEach(appointment ->
             System.out.println(appointment.getId() + ": " + appointment.getPatientName() + " (" + appointment.getAssignedDoctor().getFullName() + ")")
         );
 
         System.out.println("Enter appointment ID: ");
         String id = scanner.nextLine().trim();
         try {
-            appointmentService.delete(UUID.fromString(id));
+            appointmentDefaultService.delete(UUID.fromString(id));
             System.out.println("Appointment deleted successfully.");
         } catch (Exception e) {
             System.out.println("Error occurred while deleting appointment: " + e.getMessage());
@@ -183,10 +183,10 @@ public class ConsoleRunner implements CommandLineRunner {
 
     public void searchAppointment() {
         System.out.println("Patients' names: ");
-        appointmentService.findAll().forEach(appointment -> System.out.println(appointment.getPatientName()));
+        appointmentDefaultService.findAll().forEach(appointment -> System.out.println(appointment.getPatientName()));
         System.out.println("Enter patient's name: ");
         String patientName = scanner.nextLine().trim();
-        appointmentService.findByPatientName(patientName).forEach(System.out::println);
+        appointmentDefaultService.findByPatientName(patientName).forEach(System.out::println);
         System.out.println("finished.");
     }
 
@@ -194,7 +194,7 @@ public class ConsoleRunner implements CommandLineRunner {
         System.out.println("Enter doctor's specialization: ");
         String specialization = scanner.nextLine().trim();
 
-        doctorService.findBySpecialization(specialization).forEach(System.out::println);
+        doctorDefaultService.findBySpecialization(specialization).forEach(System.out::println);
         System.out.println("finished.");
     }
 

@@ -1,4 +1,4 @@
-package lg.pg.aui.entities;
+package lg.pg.aui.appointment.dto;
 
 import lombok.*;
 

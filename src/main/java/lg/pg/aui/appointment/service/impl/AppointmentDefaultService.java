@@ -1,8 +1,9 @@
-package lg.pg.aui.service;
+package lg.pg.aui.appointment.service.impl;
 
-import lg.pg.aui.entities.Appointment;
-import lg.pg.aui.entities.Doctor;
-import lg.pg.aui.repository.AppointmentRepository;
+import lg.pg.aui.appointment.entity.Appointment;
+import lg.pg.aui.appointment.entity.Doctor;
+import lg.pg.aui.appointment.repository.api.AppointmentRepository;
+import lg.pg.aui.appointment.service.api.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,12 +11,12 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class AppointmentService {
+public class AppointmentDefaultService implements AppointmentService {
 
     private final AppointmentRepository appointmentRepository;
 
     @Autowired
-    public AppointmentService(AppointmentRepository appointmentRepository) {
+    public AppointmentDefaultService(AppointmentRepository appointmentRepository) {
         this.appointmentRepository = appointmentRepository;
     }
 

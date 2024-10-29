@@ -1,7 +1,7 @@
-package lg.pg.aui.repository;
+package lg.pg.aui.appointment.repository.api;
 
-import lg.pg.aui.entities.Appointment;
-import lg.pg.aui.entities.Doctor;
+import lg.pg.aui.appointment.entity.Appointment;
+import lg.pg.aui.appointment.entity.Doctor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,8 @@
-package lg.pg.aui.service;
+package lg.pg.aui.appointment.service.impl;
 
-import lg.pg.aui.entities.Doctor;
-import lg.pg.aui.repository.DoctorRepository;
+import lg.pg.aui.appointment.entity.Doctor;
+import lg.pg.aui.appointment.repository.api.DoctorRepository;
+import lg.pg.aui.appointment.service.api.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,12 +10,12 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class DoctorService {
+public class DoctorDefaultService implements DoctorService {
 
     private final DoctorRepository doctorRepository;
 
     @Autowired
-    public DoctorService(DoctorRepository doctorRepository) {
+    public DoctorDefaultService(DoctorRepository doctorRepository) {
         this.doctorRepository = doctorRepository;
     }
 
