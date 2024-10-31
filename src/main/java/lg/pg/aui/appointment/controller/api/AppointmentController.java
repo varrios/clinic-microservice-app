@@ -1,5 +1,8 @@
 package lg.pg.aui.appointment.controller.api;
 
+import lg.pg.aui.appointment.dto.GetAppointmentResponse;
+import lg.pg.aui.appointment.dto.GetAppointmentsResponse;
+import lg.pg.aui.appointment.dto.PutAppointmentRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,34 +18,26 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.UUID;
 
 
+/**
+ * Controller for appointments resource. It does not return or receive entity objects but dto objects which present only
+ * those fields which are used in communication with client.
+ */
+
 public interface AppointmentController {
 
      /**
-     * request to create new appointment
-     * @return list of appointments
+     * @return list of all appointments
      */
-
     @GetMapping("api/appointments")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     GetAppointmentsResponse getAppointments();
 
     /**
-     * @param userId user's id
-     * @return list of user's appointments
+     * @param doctorId appointments' doctor
+     * @return list of appointments assigned to doctor
      */
-    @GetMapping("/api/users/{userId}/appointments")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    GetAppointmentsResponse getUserAppointments(
-            @PathVariable("userId")
-            UUID userId
-    );
 
-    /**
-     * @param doctorId doctor's id
-     * @return list of doctor's appointments
-     */
     @GetMapping("/api/doctors/{doctorId}/appointments")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
@@ -63,23 +58,8 @@ public interface AppointmentController {
             UUID id
     );
 
-    /**
-     * @param userId user's id
-     * @param appointmentId appointment's id
-     * @return single appointment
-     */
-    @GetMapping("/api/users/{userId}/appointments/{appointmentId}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    GetCharacterResponse getUserAppointment(
-            @PathVariable("userId")
-            UUID userId,
-            @PathVariable("appointmentId")
-            UUID appointmentId
-    );
-
-    /**
-     * @param id appointment's id
+     /**
+     * @param id      appointment's id
      * @param request new appointment
      */
     @PutMapping("/api/appointments/{id}")
@@ -91,7 +71,11 @@ public interface AppointmentController {
             PutAppointmentRequest request
     );
 
-
+    /**
+     * Deletes selected appointment.
+     *
+     * @param id appointment's id
+     */
     @DeleteMapping("/api/appointments/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void deleteAppointment(

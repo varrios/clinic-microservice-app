@@ -1,5 +1,7 @@
 package lg.pg.aui.appointment.controller.api;
 
+import lg.pg.aui.appointment.dto.GetDoctorResponse;
+import lg.pg.aui.appointment.dto.GetDoctorsResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,41 +13,45 @@ import java.util.UUID;
 
 
 
+
+/**
+ * Controller for doctor resource. It does not return or receive entity objects but dto objects which present only
+ * those fields which are used in communication with client.
+ */
 public interface DoctorController {
 
-
     /**
-     * @return list of professions
+     * @return list of doctors
      */
-    @GetMapping("api/professions")
+    @GetMapping("api/doctors")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    GetProfessionsResponse getProfessions();
+    GetDoctorsResponse getDoctors();
 
     /**
-     * @param id profession's id
-     * @return single profession
+     * @param id doctor's id
+     * @return single doctor
      */
-    @GetMapping("/api/professions/{id}")
+    @GetMapping("/api/doctors/{id}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    GetProfessionResponse getProfession(
+    GetDoctorResponse getDoctor(
             @PathVariable("id")
             UUID id
     );
 
-
-    /**
-     * Deletes selected profession.
+     /**
+     * Deletes selected doctor.
      *
-     * @param id profession's id
+     * @param id doctor's id
      */
-    @DeleteMapping("/api/professions/{id}")
+    @DeleteMapping("/api/doctor/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    void deleteProfession(
+    void deleteDoctor(
             @PathVariable("id")
             UUID id
     );
+
 
 
 }

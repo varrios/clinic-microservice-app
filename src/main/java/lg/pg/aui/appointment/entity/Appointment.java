@@ -3,6 +3,7 @@ package lg.pg.aui.appointment.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import javax.xml.crypto.dsig.Manifest;
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -31,7 +32,5 @@ public class Appointment implements Serializable {
     @JoinColumn(name = "doctor_id", nullable = false)
     @ToString.Exclude
     private Doctor assignedDoctor;
-
-
 
 }
