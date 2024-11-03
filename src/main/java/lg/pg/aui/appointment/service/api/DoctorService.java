@@ -5,13 +5,14 @@ import lg.pg.aui.appointment.repository.api.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface DoctorService {
 
-    List<Doctor> findAll();
+    Optional<Doctor> findById(UUID id);
 
-    Doctor save(Doctor doctor);
+    List<Doctor> findAll();
 
     List<Doctor> findBySpecialization(String specialization);
 

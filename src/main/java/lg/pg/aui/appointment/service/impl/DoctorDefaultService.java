@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -19,19 +20,25 @@ public class DoctorDefaultService implements DoctorService {
         this.doctorRepository = doctorRepository;
     }
 
+    @Override
     public List<Doctor> findAll() { return doctorRepository.findAll(); }
 
-    public Doctor save(Doctor doctor) { return doctorRepository.save(doctor); }
-
+    @Override
     public List<Doctor> findBySpecialization(String specialization) {
         return doctorRepository.findBySpecialization(specialization);
     }
 
+    @Override
+    public Optional<Doctor> findById(UUID id) {
+        return doctorRepository.findById(id);
+    }
 
+    @Override
     public void create(Doctor doctor) {
         doctorRepository.save(doctor);
     }
 
+    @Override
     public void delete(UUID id) {
         doctorRepository.deleteById(id);
     }

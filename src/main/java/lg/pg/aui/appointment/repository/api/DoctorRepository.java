@@ -9,5 +9,5 @@ import java.util.UUID;
 
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor, UUID> {
-    List<Doctor> findBySpecialization(String specialization);
+   List<Doctor> findBySpecialization(String specialization);
 }
