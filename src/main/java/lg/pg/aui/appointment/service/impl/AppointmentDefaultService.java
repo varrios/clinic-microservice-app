@@ -36,7 +36,7 @@ public class AppointmentDefaultService implements AppointmentService {
 
     @Override
     public List<Appointment> findAll() {
-        return Optional.of(appointmentRepository.findAll());
+        return appointmentRepository.findAll();
     }
 
     @Override
