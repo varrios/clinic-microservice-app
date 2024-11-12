@@ -4,7 +4,7 @@ GET http://localhost:8080/api/appointments
 
 ### Get single appointment
 
-GET http://localhost:8080/api/appointments/a25e5c24-672e-4aea-b6f9-ec7c71cc041f
+GET http://localhost:8080/api/appointments/0f3b9757-3029-4576-a8db-4f9230f8cc7a
 
 ### Get single appointment, not existing
 
@@ -27,7 +27,7 @@ Authorization: Basic a2V2aW46dXNlcnVzZXI=
 {
   "patientName": "Maciej Maćkowy",
   "patientAge" : 25,
-  "doctorId": "4d64923b-24d6-4505-8af2-c197730fc574"
+  "doctorId": "213e95d5-5103-48be-8f74-fc149d604790"
 }
 
 ### Delete appointment.
@@ -40,7 +40,7 @@ GET http://localhost:8080/api/doctors
 
 ### Get single doctor
 
-GET http://localhost:8080/api/doctors/3ff6b8da-e74f-408a-af51-52ab1e6c3a93
+GET http://localhost:8080/api/doctors/1f54b7d6-ba12-4561-87b3-7b6deaab951f
 
 ### Get single doctor, not existing
 
