@@ -2,7 +2,7 @@ package lg.pg.aui.appointment.service.impl;
 
 import lg.pg.aui.appointment.entity.Appointment;
 import lg.pg.aui.appointment.repository.api.AppointmentRepository;
-import lg.pg.aui.appointment.repository.api.DoctorRepository;
+import lg.pg.aui.doctor.repository.api.DoctorRepository;
 import lg.pg.aui.appointment.service.api.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

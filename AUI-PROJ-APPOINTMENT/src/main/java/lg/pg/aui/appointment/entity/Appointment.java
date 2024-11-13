@@ -1,9 +1,9 @@
 package lg.pg.aui.appointment.entity;
 
 import jakarta.persistence.*;
+import lg.pg.aui.doctor.entity.Doctor;
 import lombok.*;
 
-import javax.xml.crypto.dsig.Manifest;
 import java.io.Serializable;
 import java.util.UUID;
 

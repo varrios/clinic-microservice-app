@@ -2,10 +2,9 @@ package lg.pg.aui.appointment.function;
 
 
 import lg.pg.aui.appointment.dto.GetDoctorsResponse;
-import lg.pg.aui.appointment.entity.Doctor;
+import lg.pg.aui.doctor.entity.Doctor;
 import org.springframework.stereotype.Component;
 
-import javax.print.Doc;
 import java.util.List;
 import java.util.function.Function;
 

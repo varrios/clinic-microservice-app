@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>lg.pg</groupId>
-    <artifactId>aui</artifactId>
+    <artifactId>AUI-PROJECT-APPOINTMENT</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>aui</name>
     <description>Project for CS University course AUI</description>

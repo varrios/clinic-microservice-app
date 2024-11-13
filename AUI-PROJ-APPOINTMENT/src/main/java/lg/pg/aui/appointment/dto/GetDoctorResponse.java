@@ -1,6 +1,6 @@
 package lg.pg.aui.appointment.dto;
 
-import lg.pg.aui.appointment.entity.Doctor;
+import lg.pg.aui.doctor.entity.Doctor;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
