@@ -48,6 +48,6 @@ GET http://localhost:8081/api/doctors/ac4e2683-b2ba-4695-94d9-806a97fce71e
 
 ### Delete doctor
 
-DELETE http://localhost:8081/api/doctors/92819850-c406-47f2-a4b7-cb9e7460f1b6
+DELETE http://localhost:8081/api/doctors/f5875513-bf7b-4ae1-b8a5-5b70a1b90e76
 
 

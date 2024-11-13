@@ -45,7 +45,7 @@ public interface DoctorController {
      *
      * @param id doctor's id
      */
-    @DeleteMapping("/api/doctor/{id}")
+    @DeleteMapping("/api/doctors/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void deleteDoctor(
             @PathVariable("id")
