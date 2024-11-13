@@ -1,9 +1,9 @@
 package lg.pg.aui.initialize;
 
-import lg.pg.aui.entities.Appointment;
-import lg.pg.aui.entities.Doctor;
-import lg.pg.aui.service.AppointmentService;
-import lg.pg.aui.service.DoctorService;
+import lg.pg.aui.appointment.entity.Appointment;
+import lg.pg.aui.appointment.entity.Doctor;
+import lg.pg.aui.appointment.service.impl.AppointmentDefaultService;
+import lg.pg.aui.appointment.service.impl.DoctorDefaultService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +16,17 @@ import java.util.UUID;
 @Component
 public class InitializeData implements InitializingBean {
 
-    private final DoctorService doctorService;
+    private final DoctorDefaultService doctorDefaultService;
 
-    private final AppointmentService appointmentService;
+    private final AppointmentDefaultService appointmentDefaultService;
 
     @Autowired
     public InitializeData(
-            DoctorService doctorService,
-            AppointmentService appointmentService
+            DoctorDefaultService doctorDefaultService,
+            AppointmentDefaultService appointmentDefaultService
     ) {
-        this.doctorService = doctorService;
-        this.appointmentService = appointmentService;
+        this.doctorDefaultService = doctorDefaultService;
+        this.appointmentDefaultService = appointmentDefaultService;
     }
 
     @Override
@@ -51,9 +51,9 @@ public class InitializeData implements InitializingBean {
                 .specialization("Pediatrician")
                 .appointments(new ArrayList<>())
                 .build();
-        doctorService.create(surgeonDoctor);
-        doctorService.create(psychiatristDoctor);
-        doctorService.create(pediatricianDoctor);
+        doctorDefaultService.create(surgeonDoctor);
+        doctorDefaultService.create(psychiatristDoctor);
+        doctorDefaultService.create(pediatricianDoctor);
 
         Appointment appointment1 = Appointment.builder()
                 .id(UUID.randomUUID())
@@ -83,10 +83,10 @@ public class InitializeData implements InitializingBean {
                 .assignedDoctor(surgeonDoctor)
                 .build();
 
-        appointmentService.create(appointment1);
-        appointmentService.create(appointment2);
-        appointmentService.create(appointment3);
-        appointmentService.create(appointment4);
+        appointmentDefaultService.create(appointment1);
+        appointmentDefaultService.create(appointment2);
+        appointmentDefaultService.create(appointment3);
+        appointmentDefaultService.create(appointment4);
     }
 
     @SneakyThrows
