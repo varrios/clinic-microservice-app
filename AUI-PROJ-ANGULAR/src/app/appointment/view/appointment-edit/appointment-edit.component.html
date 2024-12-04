@@ -26,7 +26,7 @@
             <legend>Assigned doctor:</legend>
             <div *ngFor="let doctor of doctors.doctors">
               <label>
-                <input type="radio" name="doctor" [(ngModel)]="appointment.assignedDoctor" [value]="doctor.id"/>
+                <input type="radio" name="doctor" *ngIf="appointment" [(ngModel)]="appointment.assignedDoctor" [value]="doctor.id"/>
                 {{doctor.name}}
               </label>
             </div>
@@ -43,6 +43,6 @@
         </div>
       </div>
     </form>
-  </article>
+</article>
   
   

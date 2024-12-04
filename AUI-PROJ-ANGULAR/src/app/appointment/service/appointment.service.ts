@@ -9,7 +9,9 @@ import { Appointment } from '../model/appointment';
 /**
  * Character management service. Calls REST endpoints.
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AppointmentService {
 
   /**

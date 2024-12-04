@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import { OnInit, Component } from '@angular/core';
 import { AppointmentForm } from '../../model/appointment-form';
-import { Doctors } from '../../model/doctors';
+import { Doctors } from '../../../doctor/model/doctors';
 import { AppointmentService } from '../../service/appointment.service';
-import { DoctorService } from '../../service/doctor.service';
+import { DoctorService } from '../../../doctor/service/doctor.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Appointments } from '../../model/appointments';
+import { FormsModule } from '@angular/forms'; 
+import { NgIf } from '@angular/common';
 
 
 @Component({
   selector: 'app-appointment-edit',
-  imports: [],
+  imports: [FormsModule, NgIf],
   templateUrl: './appointment-edit.component.html',
-  styleUrl: './appointment-edit.component.css'
+  styleUrls: ['./appointment-edit.component.css']
 })
 export class AppointmentEditComponent implements OnInit {
   
@@ -45,7 +47,7 @@ export class AppointmentEditComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.appointmentService.getAppointments()
+      this.doctorService.getDoctors()
         .subscribe(doctors => this.doctors = doctors);
 
       this.appointmentService.getAppointment(params['uuid'])
@@ -57,6 +59,7 @@ export class AppointmentEditComponent implements OnInit {
             assignedDoctor: appointment.assignedDoctor.id
           };
           this.original = {...this.appointment};
+
         });
     });
   }

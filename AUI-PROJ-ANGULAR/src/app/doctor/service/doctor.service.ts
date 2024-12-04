@@ -23,7 +23,7 @@ export class DoctorService {
    *
    * @return list of doctors
    */
-  getProfessions(): Observable<Doctors> {
+  getDoctors(): Observable<Doctors> {
     return this.http.get<Doctors>('/api/doctors');
   }
 }

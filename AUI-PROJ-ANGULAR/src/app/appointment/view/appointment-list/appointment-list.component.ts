@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from "../../service/appointment.service";
 import { Appointments } from "../../model/appointments";
 import { Appointment } from "../../model/appointment";
+import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-appointment-list',
-  templateUrl: './app-appointment-list.html',
-  styleUrls: ['./app-appointment-list.css']
+  imports: [FormsModule, NgIf],
+  templateUrl: './appointment-list.html',
+  styleUrls: ['./appointment-list.component.css']
 })
 export class AppointmentListComponent implements OnInit{
 
