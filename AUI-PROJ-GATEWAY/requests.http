@@ -1,0 +1,53 @@
+### Get all appointments
+
+GET http://localhost:8084/api/appointments
+
+### Get single appointment
+
+GET http://localhost:8084/api/appointments/83dc74c2-7fd8-43a1-979a-bf38b32953a5
+
+### Get single appointment, not existing
+
+GET http://localhost:8084/api/appointments/a25e5c24-672e-4aea-b6f9-ec9c72cc023f
+
+### Get doctor appointments
+
+GET http://localhost:8084/api/doctors/e486cc56-6b99-4478-b435-323e8562b8bd/appointments
+
+### Get doctor appointments, not existing
+
+GET http://localhost:8084/api/doctors/f5875513-bf7b-4ae1-b8a5-5b70a1b90e76/appointments
+
+### Create new appointment
+
+PUT http://localhost:8084/api/appointments/2d9b1e8c-67c5-4188-a911-5f064a63d8cd
+Content-Type: application/json
+Authorization: Basic a2V2aW46dXNlcnVzZXI=
+
+{
+  "patientName": "Maciej Maćkowy",
+  "patientAge" : 25,
+  "doctorId": "e486cc56-6b99-4478-b435-323e8562b8bd"
+}
+
+### Delete appointment.
+
+DELETE http://localhost:8084/api/appointments/4a2348e4-8a9f-47b4-8987-5c0c875cc5de
+
+### Get all doctors
+
+GET http://localhost:8084/api/doctors
+
+### Get single doctor
+
+GET http://localhost:8084/api/doctors/1f54b7d6-ba12-4561-87b3-7b6deaab951f
+
+### Get single doctor, not existing
+
+GET http://localhost:8084/api/doctors/ac4e2683-b2ba-4695-94d9-806a97fce71e
+
+### Delete doctor
+
+DELETE http://localhost:8084/api/doctors/92819850-c406-47f2-a4b7-cb9e7460f1b6
+
+

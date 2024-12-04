@@ -1,0 +1,36 @@
+### Get all appointments
+
+GET http://localhost:8081/api/appointments
+
+### Get single appointment
+
+GET http://localhost:8081/api/appointments/83dc74c2-7fd8-43a1-979a-bf38b32953a5
+
+### Get single appointment, not existing
+
+GET http://localhost:8081/api/appointments/a25e5c24-672e-4aea-b6f9-ec9c72cc023f
+
+### Get doctor appointments
+
+GET http://localhost:8081/api/doctors/e486cc56-6b99-4478-b435-323e8562b8bd/appointments
+
+### Get doctor appointments, not existing
+
+GET http://localhost:8081/api/doctors/a25e5c24-672e-4aea-b6f9-ec9c72cc023f/appointments
+
+### Create new appointment
+
+PUT http://localhost:8081/api/appointments/3c6f1eb1-8069-44ab-988f-d7fed2b65d87
+Content-Type: application/json
+Authorization: Basic a2V2aW46dXNlcnVzZXI=
+
+{
+  "patientName": "Maciej Maćkowy",
+  "patientAge" : 25,
+  "doctorId": "1d477a8b-bf89-450d-af1a-bdc754272f6c"
+}
+
+### Delete appointment.
+
+DELETE http://localhost:8081/api/appointments/4a2348e4-8a9f-47b4-8987-5c0c875cc5de
+

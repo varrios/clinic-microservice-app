@@ -1,0 +1,15 @@
+### Get all doctors
+
+GET http://localhost:8082/api/doctors
+
+### Get single profession
+
+GET http://localhost:8082/api/doctors/f5875513-bf7b-4ae1-b8a5-5b70a1b90e76
+
+### Get single profession, not existing
+
+GET http://localhost:8082/api/doctors/ac4e2683-b2ba-4695-94d9-806a97fce71e
+
+### Delete profession
+
+DELETE http://localhost:8082/api/doctors/d89cdbee-9c17-4a6d-a90e-59fb6b782d5c
