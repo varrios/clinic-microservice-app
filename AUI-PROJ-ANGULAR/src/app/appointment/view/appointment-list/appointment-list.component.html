@@ -12,7 +12,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let appointment of appointments.appointments">
-        <td>{{appointment.name}}</td>
+        <td>{{appointment.patientName}}</td>
         <td>
           <a [routerLink]="['/appointments', appointment.id]">View</a>
         </td>

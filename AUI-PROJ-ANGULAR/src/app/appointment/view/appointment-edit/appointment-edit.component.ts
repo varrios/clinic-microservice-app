@@ -1,22 +1,23 @@
-import { OnInit, Component } from '@angular/core';
-import { AppointmentForm } from '../../model/appointment-form';
-import { Doctors } from '../../../doctor/model/doctors';
-import { AppointmentService } from '../../service/appointment.service';
-import { DoctorService } from '../../../doctor/service/doctor.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Appointments } from '../../model/appointments';
-import { FormsModule } from '@angular/forms'; 
-import { NgIf } from '@angular/common';
-
+import {Component, OnInit} from '@angular/core';
+import {AppointmentForm} from '../../model/appointment-form';
+import {AppointmentService} from '../../service/appointment.service';
+import {DoctorService} from '../../../doctor/service/doctor.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormsModule} from '@angular/forms';
+import {Doctors} from '../../../doctor/model/doctors';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-appointment-edit',
-  imports: [FormsModule, NgIf],
   templateUrl: './appointment-edit.component.html',
-  styleUrls: ['./appointment-edit.component.css']
+  imports: [
+    FormsModule ,NgIf
+  ],
+  standalone: true,
+  styleUrl: './appointment-edit.component.css'
 })
-export class AppointmentEditComponent implements OnInit {
-  
+export class AppointmentEditComponent implements OnInit{
+
   /**
    * Appointment's id.
    */

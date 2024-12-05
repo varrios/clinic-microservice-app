@@ -1,14 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { Appointments } from "../model/appointments";
-import { AppointmentDetails } from "../model/appointment-details";
-import { AppointmentForm } from "../model/appointment-form";
-import { Appointment } from '../model/appointment';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {AppointmentDetails} from '../model/appointment-details';
+import {Appointments} from '../model/appointments';
+import {AppointmentForm} from '../model/appointment-form';
 
-/**
- * Character management service. Calls REST endpoints.
- */
 @Injectable({
   providedIn: 'root'
 })
@@ -17,9 +13,7 @@ export class AppointmentService {
   /**
    * @param http HTTP client
    */
-  constructor(private http: HttpClient) {
-
-  }
+  constructor(private http: HttpClient) {}
 
   /**
    * Fetches all appointments.
@@ -37,7 +31,7 @@ export class AppointmentService {
    * @return single appointment
    */
   getAppointment(uuid: string): Observable<AppointmentDetails> {
-    return this.http.get<AppointmentDetails>('/api/apppointments/' + uuid);
+    return this.http.get<AppointmentDetails>('/api/appointments/' + uuid);
   }
 
   /**
@@ -58,5 +52,4 @@ export class AppointmentService {
   putAppointment(uuid: string, request: AppointmentForm): Observable<any> {
     return this.http.put('/api/appointments/' + uuid, request);
   }
-
 }

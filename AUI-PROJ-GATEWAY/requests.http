@@ -4,7 +4,7 @@ GET http://localhost:8084/api/appointments
 
 ### Get single appointment
 
-GET http://localhost:8084/api/appointments/83dc74c2-7fd8-43a1-979a-bf38b32953a5
+GET http://localhost:8084/api/appointments/11e059ce-8c08-4145-bf55-cd9015b5c0f8
 
 ### Get single appointment, not existing
 

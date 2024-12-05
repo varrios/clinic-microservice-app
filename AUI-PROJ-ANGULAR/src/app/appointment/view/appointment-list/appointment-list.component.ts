@@ -3,12 +3,17 @@ import { AppointmentService } from "../../service/appointment.service";
 import { Appointments } from "../../model/appointments";
 import { Appointment } from "../../model/appointment";
 import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
+// import {NgFor, NgIf} from '@angular/common';
+import {RouterLink} from '@angular/router';
+// import {BrowserModule} from '@angular/platform-browser';
+import { CommonModule } from '@angular/common'
+
 
 @Component({
   selector: 'app-appointment-list',
-  imports: [FormsModule, NgIf],
-  templateUrl: './appointment-list.html',
+  imports: [FormsModule, RouterLink, CommonModule],
+  templateUrl: './appointment-list.component.html',
+  standalone: true,
   styleUrls: ['./appointment-list.component.css']
 })
 export class AppointmentListComponent implements OnInit{

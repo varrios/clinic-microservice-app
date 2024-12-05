@@ -10,6 +10,7 @@ import { NgIf } from '@angular/common'; // Import NgIf
   selector: 'app-appointment-view',
   imports: [FormsModule, NgIf], // Add FormsModule to imports
   templateUrl: './appointment-view.component.html',
+  standalone: true,
   styleUrls: ['./appointment-view.component.css']
 })
 export class AppointmentViewComponent implements OnInit {
