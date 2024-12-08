@@ -2,12 +2,9 @@ package lg.pg.aui.doctor.controller.api;
 
 import lg.pg.aui.doctor.dto.GetDoctorResponse;
 import lg.pg.aui.doctor.dto.GetDoctorsResponse;
+import lg.pg.aui.doctor.dto.PutDoctorRequest;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -51,6 +48,16 @@ public interface DoctorController {
             @PathVariable("id")
             UUID id
     );
+
+    @PutMapping("/api/doctor/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    void putDoctor(
+            @PathVariable("id")
+            UUID id,
+            @RequestBody
+            PutDoctorRequest request
+    );
+
 
 
 

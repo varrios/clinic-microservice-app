@@ -3,6 +3,11 @@ import {AppointmentListComponent} from './appointment/view/appointment-list/appo
 import {AppointmentViewComponent} from './appointment/view/appointment-view/appointment-view.component';
 import {AppointmentEditComponent} from './appointment/view/appointment-edit/appointment-edit.component';
 import {NgModule} from '@angular/core';
+import {DoctorViewComponent} from './doctor/view/doctor-view/doctor-view.component';
+import {DoctorListComponent} from './doctor/view/doctor-list/doctor-list.component';
+import {DoctorEditComponent} from './doctor/view/doctor-edit/doctor-edit.component';
+import {AppointmentCreateComponent} from './appointment/view/appointment-create/appointment-create.component';
+import {DoctorCreateComponent} from './doctor/view/doctor-create/doctor-create.component';
 
 export const routes: Routes = [
     {
@@ -16,9 +21,28 @@ export const routes: Routes = [
     ,
     {
         component: AppointmentEditComponent,
-        path: "characters/:uuid/edit"
+        path: "appointments/:uuid/edit"
+    },
+    {
+        component: DoctorViewComponent,
+        path: "doctors/:uuid"
+    },
+    {
+        component: DoctorEditComponent,
+        path: "doctors/:uuid/edit"
+    },
+    {
+      component: DoctorListComponent,
+      path: "doctors"
+    },
+    {
+      component: AppointmentCreateComponent,
+      path: "appointment/create"
+    },
+    {
+        component: DoctorCreateComponent,
+        path: "doctor/create"
     }
-
 ];
 
 /**

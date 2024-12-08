@@ -40,11 +40,22 @@ public class DoctorDefaultService implements DoctorService {
     @Override
     public void create(Doctor doctor) {
         doctorRepository.save(doctor);
+//        if (eventRepository != null) {
+//            eventRepository.save(doctor);
+//        }
+//        else{
+//            System.out.println("Event repository is null");
+//        }
     }
 
     @Override
     public void delete(UUID id) {
         doctorRepository.findById(id).ifPresent(doctorRepository::delete);
-        eventRepository.delete(id);
+        if (eventRepository != null){
+            eventRepository.delete(id);
+        }else{
+            System.out.println("Event repository is null");
+        }
+
     }
 }

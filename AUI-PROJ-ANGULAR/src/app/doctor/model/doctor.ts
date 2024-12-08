@@ -12,7 +12,8 @@ export interface Doctor {
     /**
      * Name of the doctor.
      */
-    name: string;
+    fullName: string;
+    specialization: string;
 
   }
 

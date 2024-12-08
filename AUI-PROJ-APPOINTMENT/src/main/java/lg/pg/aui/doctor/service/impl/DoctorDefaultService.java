@@ -40,6 +40,6 @@ public class DoctorDefaultService implements DoctorService {
 
     @Override
     public void delete(UUID id) {
-        doctorRepository.deleteById(id);
+        doctorRepository.findById(id).ifPresent(doctorRepository::delete);
     }
 }

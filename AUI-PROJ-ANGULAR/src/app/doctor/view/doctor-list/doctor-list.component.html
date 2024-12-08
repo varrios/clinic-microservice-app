@@ -1,0 +1,23 @@
+<article class="text--justified">
+  <header><h2>Wszyscy doktorzy przyjmujący w klinice:</h2></header>
+
+  <div *ngIf="doctors" class="appointment-container">
+    <div>
+      <div *ngFor="let doctor of doctors.doctors" class="appointment-block">
+        <span class="appointment-title">Doktor w klinice - {{doctor.fullName}}</span>
+        <p class="appointment-text-element">ID : {{doctor.id}}</p>
+        <div class="appointment-list-buttons-container">
+          <div class="appointment-list-button">
+            <a [routerLink]="['/doctors', doctor.id]">View</a>
+          </div>
+          <div class="appointment-list-button">
+            <a [routerLink]="['/doctors', doctor.id, 'edit']">Edit</a>
+          </div>
+          <div class="appointment-list-button">
+            <span (click)="onDelete(doctor)">Delete</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

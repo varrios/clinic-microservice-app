@@ -1,0 +1,25 @@
+<article *ngIf="doctor">
+
+    <div class="appointment-container">
+
+      <div class="appointment-block">
+        <h2>Doktor {{doctor.fullName}}</h2>
+        <h3>Numer identyfikacyjny doktora: {{doctor.id}} </h3>
+        <h3>Specjalizacja: {{doctor.specialization}} </h3>
+
+        <h3>Wszystkie wizyty przypisane doktora: </h3>
+         <div *ngFor="let appointment of appointments?.appointments" class="appointment-single-block">
+            <span class="appointment-title">Wizyta pacjenta - {{appointment.patientName}}</span>
+            <p class="appointment-text-element">ID : {{appointment.id}}</p>
+         </div>
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <div class="col-6">
+
+      </div>
+    </div>
+  </article>
+
+

@@ -21,7 +21,7 @@ public class AuiDoctorApplication {
      */
 
 	@Bean
-    public RestTemplate restTemplate(@Value("${aui.doctor.url}") String baseUrl) {
+    public RestTemplate restTemplate(@Value("${aui.appointment.url}") String baseUrl) {
         return new RestTemplateBuilder().rootUri(baseUrl).build();
     }
 

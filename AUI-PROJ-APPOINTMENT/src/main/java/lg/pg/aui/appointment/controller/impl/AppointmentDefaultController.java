@@ -3,6 +3,7 @@ package lg.pg.aui.appointment.controller.impl;
 import lg.pg.aui.appointment.controller.api.AppointmentController;
 import lg.pg.aui.appointment.dto.GetAppointmentResponse;
 import lg.pg.aui.appointment.dto.GetAppointmentsResponse;
+import lg.pg.aui.appointment.dto.PatchAppointmentRequest;
 import lg.pg.aui.appointment.dto.PutAppointmentRequest;
 import lg.pg.aui.appointment.function.*;
 import lg.pg.aui.appointment.service.api.AppointmentService;
@@ -71,6 +72,8 @@ public class AppointmentDefaultController implements AppointmentController {
                         }
                 );
     }
+
+
 
 
 }

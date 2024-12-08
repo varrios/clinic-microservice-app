@@ -22,6 +22,7 @@ public class DoctorsToResponseFunction implements Function<List<Doctor>, GetDoct
                         .map(profession -> GetDoctorsResponse.Doctor.builder()
                                 .id(profession.getId())
                                 .fullName(profession.getFullName())
+                                .specialization(profession.getSpecialization())
                                 .build())
                         .toList())
                 .build();

@@ -41,7 +41,13 @@ public class DoctorDefaultController implements DoctorController {
 
     @Override
     public void deleteDoctor(UUID id) {
-        service.delete(id);
+        service.findById(id)
+                .ifPresentOrElse(
+                        profession -> service.delete(id),
+                        () -> {
+                            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+                        }
+                );
     }
 
 

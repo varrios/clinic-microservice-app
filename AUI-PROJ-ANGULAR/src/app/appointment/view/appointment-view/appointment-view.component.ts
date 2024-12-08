@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from "../../service/appointment.service";
-import { ActivatedRoute, Router } from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import { AppointmentDetails } from "../../model/appointment-details";
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { NgIf } from '@angular/common'; // Import NgIf
@@ -8,7 +8,7 @@ import { NgIf } from '@angular/common'; // Import NgIf
 
 @Component({
   selector: 'app-appointment-view',
-  imports: [FormsModule, NgIf], // Add FormsModule to imports
+  imports: [FormsModule, NgIf, RouterLink], // Add FormsModule to imports
   templateUrl: './appointment-view.component.html',
   standalone: true,
   styleUrls: ['./appointment-view.component.css']

@@ -5,13 +5,13 @@ import {DoctorService} from '../../../doctor/service/doctor.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {Doctors} from '../../../doctor/model/doctors';
-import {NgIf} from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-appointment-edit',
   templateUrl: './appointment-edit.component.html',
   imports: [
-    FormsModule ,NgIf
+    FormsModule, NgIf, NgForOf
   ],
   standalone: true,
   styleUrl: './appointment-edit.component.css'
@@ -34,7 +34,7 @@ export class AppointmentEditComponent implements OnInit{
   original: AppointmentForm | undefined;
 
   /**
-   * Available professions.
+   * Available doctors.
    */
   doctors: Doctors | undefined;
 
@@ -57,7 +57,7 @@ export class AppointmentEditComponent implements OnInit{
           this.appointment = {
             patientName: appointment.patientName,
             patientAge: appointment.patientAge,
-            assignedDoctor: appointment.assignedDoctor.id
+            doctorId: appointment.assignedDoctor.id
           };
           this.original = {...this.appointment};
 

@@ -1,5 +1,7 @@
 package lg.pg.aui.doctor.controller.impl;
 
+import lg.pg.aui.doctor.dto.PutDoctorRequest;
+import lg.pg.aui.doctor.function.RequestToDoctorFunction;
 import lombok.extern.java.Log;
 import lg.pg.aui.doctor.controller.api.DoctorController;
 import lg.pg.aui.doctor.dto.GetDoctorResponse;
@@ -22,12 +24,14 @@ public class DoctorDefaultController implements DoctorController {
     private final DoctorService service;
     private final DoctorToResponseFunction doctorToResponse;
     private final DoctorsToResponseFunction doctorsToResponse;
+    private final RequestToDoctorFunction requestToDoctorFunction;
 
     @Autowired
-    public DoctorDefaultController(DoctorService service, DoctorToResponseFunction doctorToResponse, DoctorsToResponseFunction doctorsToResponse) {
+    public DoctorDefaultController(DoctorService service, DoctorToResponseFunction doctorToResponse, DoctorsToResponseFunction doctorsToResponse, RequestToDoctorFunction requestToDoctorFunction) {
         this.service = service;
         this.doctorToResponse = doctorToResponse;
         this.doctorsToResponse = doctorsToResponse;
+        this.requestToDoctorFunction = requestToDoctorFunction;
     }
 
     @Override
@@ -44,7 +48,19 @@ public class DoctorDefaultController implements DoctorController {
 
     @Override
     public void deleteDoctor(UUID id) {
-        service.delete(id);
+        service.findById(id)
+                .ifPresentOrElse(
+                        profession -> service.delete(id),
+                        () -> {
+                            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+                        }
+                );
+
+    }
+
+    @Override
+    public void putDoctor(UUID id, PutDoctorRequest request) {
+        service.create(requestToDoctorFunction.apply(id, request));
     }
 
 

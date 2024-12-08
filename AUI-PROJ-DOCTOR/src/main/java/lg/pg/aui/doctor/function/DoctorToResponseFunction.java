@@ -18,6 +18,7 @@ public class DoctorToResponseFunction implements Function<Doctor, GetDoctorRespo
         return GetDoctorResponse.builder()
                 .id(entity.getId())
                 .fullName(entity.getFullName())
+                .specialization(entity.getSpecialization())
                 .build();
     }
 

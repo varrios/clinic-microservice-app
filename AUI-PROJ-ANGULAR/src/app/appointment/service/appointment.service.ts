@@ -52,4 +52,5 @@ export class AppointmentService {
   putAppointment(uuid: string, request: AppointmentForm): Observable<any> {
     return this.http.put('/api/appointments/' + uuid, request);
   }
+
 }
