@@ -1,0 +1,46 @@
+<article>
+    <header><h2>Create Appointment</h2></header>
+
+    <form class="container" #form="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-4 p-2">
+                <div>
+                    <label for="patientName">Patient's name:</label>
+                    <input id="patientName" name="patientName" [(ngModel)]="appointment.patientName" required />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4 p-2">
+                <div>
+                    <label for="patientAge">Patient's age:</label>
+                    <input id="patientAge" name="patientAge" [(ngModel)]="appointment.patientAge" type="number" required />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4 p-2">
+                <fieldset *ngIf="doctors">
+                    <legend>Assigned doctor:</legend>
+                    <div *ngFor="let doctor of doctors.doctors">
+                        <label>
+                            <input type="radio" name="doctorId" [(ngModel)]="appointment.doctorId" [value]="doctor.id" />
+                            {{ doctor.fullName }}
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2 p-2">
+                <button type="submit">Create</button>
+            </div>
+            <div class="col-2 p-2">
+                <button type="button" (click)="form.resetForm()">Reset</button>
+            </div>
+        </div>
+    </form>
+</article>

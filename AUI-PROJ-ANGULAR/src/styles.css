@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+  font-family: 'lato', 'Source_Sans_3', serif;
+  color: antiquewhite;
+}
+
+body {
+  background-color: #121212;
+}
+
+@font-face {
+  font-family: lato;
+  src: url(assets/fonts/Source_Sans_3/SourceSans3-VariableFont_wght.ttf) format("opentype");
+}

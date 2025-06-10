@@ -1,0 +1,35 @@
+<article *ngIf="doctor">
+    <header><h2>Edit character</h2></header>
+
+    <form class="container"  #form="ngForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-4 p-2">
+          <div>
+            <label for="fullName">Doctor's name:</label>
+            <input id="fullName" name="fullName" [(ngModel)]="doctor.fullName"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4 p-2">
+          <div>
+            <label for="specialization">Specjalizacja:</label>
+            <input id="specialization" name="specialization" [(ngModel)]="doctor.specialization"/>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-2 p-2">
+          <button type="submit">Update</button>
+        </div>
+        <div class="col-2 p-2">
+          <button type="button" (click)="form.resetForm(original)">Reset</button>
+        </div>
+      </div>
+    </form>
+</article>
+
+

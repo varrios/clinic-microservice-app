@@ -1,5 +1,6 @@
 package lg.pg.aui.doctor.event.repository.rest;
 
+import lg.pg.aui.doctor.entity.Doctor;
 import lg.pg.aui.doctor.event.repository.api.DoctorEventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,5 +21,10 @@ public class DoctorEventRestRepository implements DoctorEventRepository {
     @Override
     public void delete(UUID id) {
         restTemplate.delete("/api/doctors/{id}", id);
+    }
+
+    @Override
+    public void save(Doctor doctor) {
+        restTemplate.put("/api/doctor/{id}", doctor, doctor.getId());
     }
 }

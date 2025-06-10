@@ -1,0 +1,28 @@
+<article class="text--justified">
+  <header><h2>Appointments</h2></header>
+
+  <table *ngIf="appointments">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>View</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let appointment of appointments.appointments">
+        <td>{{appointment.name}}</td>
+        <td>
+          <a [routerLink]="['/appointments', appointment.id]">View</a>
+        </td>
+        <td>
+          <a [routerLink]="['/appointments', appointment.id, 'edit']">Edit</a>
+        </td>
+        <td>
+          <button (click)="onDelete(appointment)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</article>

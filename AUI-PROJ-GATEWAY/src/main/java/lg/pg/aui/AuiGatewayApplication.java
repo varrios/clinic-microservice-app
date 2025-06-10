@@ -34,6 +34,7 @@ public class AuiGatewayApplication {
                         .path(
                                 "/api/appointments/{uuid}",
                                 "/api/appointments",
+                                "/api/appointment",
                                 "/api/doctors/{uuid}/appointments",
                                 "/api/doctors/{uuid}/appointments/**"
                         )
@@ -44,7 +45,8 @@ public class AuiGatewayApplication {
                         .and()
                         .path(
                                 "/api/doctors",
-                                "/api/doctors/**"
+                                "/api/doctors/**",
+                                "/api/doctor/**"
                         )
                         .uri(doctorUrl)
                 )

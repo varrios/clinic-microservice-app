@@ -1,0 +1,26 @@
+<article *ngIf="appointment">
+
+
+    <div class="appointment-container">
+
+      <div class="appointment-block">
+        <h2>{{appointment.patientName}} - {{appointment.patientAge}} lat</h2>
+        <h3>Numer identyfikacyjny wizyty:  {{appointment.id}} </h3>
+        <h2>Szczegóły dotyczące doktora</h2>
+        <h3>Numer identyfikacyjny doktora: {{appointment.assignedDoctor.id}} </h3>
+        <div class="appointment-list-buttons-container">
+          <div class="appointment-list-button">
+            <a [routerLink]="['/doctors', appointment.assignedDoctor.id]">Zobacz szczegóły doktora</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <div class="col-6">
+
+      </div>
+    </div>
+  </article>
+
+

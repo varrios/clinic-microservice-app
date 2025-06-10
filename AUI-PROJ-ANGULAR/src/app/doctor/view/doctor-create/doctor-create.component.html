@@ -1,0 +1,33 @@
+<article>
+    <header><h2>Create Doctor</h2></header>
+
+    <form class="container" #form="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-4 p-2">
+                <div>
+                    <label for="fullName">Full Name:</label>
+                    <input id="fullName" name="fullName" [(ngModel)]="doctor.fullName" required />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4 p-2">
+                <div>
+                    <label for="specialization">Specialty:</label>
+                    <input id="specialization" name="specialization" [(ngModel)]="doctor.specialization" required />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-2 p-2">
+                <button type="submit">Create</button>
+            </div>
+            <div class="col-2 p-2">
+                <button type="button" (click)="form.resetForm()">Reset</button>
+            </div>
+        </div>
+    </form>
+</article>

@@ -2,17 +2,11 @@ package lg.pg.aui.appointment.controller.api;
 
 import lg.pg.aui.appointment.dto.GetAppointmentResponse;
 import lg.pg.aui.appointment.dto.GetAppointmentsResponse;
+import lg.pg.aui.appointment.dto.PatchAppointmentRequest;
 import lg.pg.aui.appointment.dto.PutAppointmentRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.UUID;

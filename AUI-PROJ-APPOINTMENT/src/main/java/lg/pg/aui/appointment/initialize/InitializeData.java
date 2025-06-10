@@ -32,21 +32,21 @@ public class InitializeData implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         Doctor surgeonDoctor = Doctor.builder()
-                .id(UUID.randomUUID())
+                .id(UUID.fromString("f5875513-bf7b-4ae1-b8a5-5b70a1b90e76"))
                 .fullName("Jan Kowalski")
                 .specialization("Surgeon")
                 .appointments(new ArrayList<>())
                 .build();
 
         Doctor psychiatristDoctor = Doctor.builder()
-                .id(UUID.randomUUID())
+                .id(UUID.fromString("5d1da2ae-6a14-4b6d-8b4f-d117867118d4"))
                 .fullName("Tomasz Nowak")
                 .specialization("Psychiatrist")
                 .appointments(new ArrayList<>())
                 .build();
 
         Doctor pediatricianDoctor = Doctor.builder()
-                .id(UUID.randomUUID())
+                .id(UUID.fromString("2d9b1e8c-67c5-4188-a911-5f064a63d8cd"))
                 .fullName("Anna Wiśniewska")
                 .specialization("Pediatrician")
                 .appointments(new ArrayList<>())
