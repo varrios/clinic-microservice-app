@@ -1,30 +1,21 @@
-# Step 1: Build Angular app
-FROM node:19 AS build
+FROM nginx:1.23.3
 
-WORKDIR /app
+LABEL org.opencontainers.image.title="aui-proj-angular"
+LABEL org.opencontainers.image.description="Angular Frontend"
+LABEL org.opencontainers.image.authors="Lucjan Gackowski"
+LABEL org.opencontainers.image.version="0.0.1-SNAPSHOT"
 
-# Install dependencies
-COPY package*.json ./
-RUN npm install
+LABEL build_version=""
+LABEL maintainer=""
 
-# Copy source files
-COPY . .
+ENV VERSION="0.0.1-SNAPSHOT"
 
-# Build Angular app
-RUN npm run build --prod
+ENV API_URL http://localhost:8080/api
 
-# Step 2: Serve Angular app with NGINX
-FROM nginx:alpine
-
-# Copy the custom NGINX configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-ADD docker/etc/nginx/templates/ /etc/nginx/templates/
-
-# Copy the built Angular app from the previous stage
-COPY --from=build /app/dist/aui-proj-angular/browser /usr/share/nginx/html
-
-# Expose the port NGINX will listen to
 EXPOSE 80
 
-# Configure NGINX to serve the Angular app
-CMD ["nginx", "-g", "daemon off;"]
+ADD dist/aui-proj-angular/browser /usr/share/nginx/html
+ADD dist/aui-proj-angular/prerendered-routes.json /usr/share/nginx/html
+ADD dist/aui-proj-angular/3rdpartylicenses.txt /usr/share/nginx/html
+
+ADD docker/etc/nginx/templates/ /etc/nginx/templates/

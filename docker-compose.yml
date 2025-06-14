@@ -1,54 +1,36 @@
+version: '3'
+
 services:
-  angular-app:
-    build:
-      context: ./AUI-PROJ-ANGULAR
-    image: aui-proj-angular:latest
-    container_name: aui-proj-angular-container
-    ports:
-      - "4200:80"  # Expose port 4200 for accessing Angular app externally
-    environment:
-      - NGINX_HOST=localhost
-      - NGINX_PORT=80
-    networks:
-      - backend
-
-  doctor-app:
-    build:
-      context: ./AUI-PROJ-DOCTOR
-    image: aui-proj-doctor:latest
-    container_name: aui-proj-doctor-container
-    ports:
-      - "8082:8082"  # Expose port 8082 for external access
-    networks:
-      - backend
-
-  appointments-app:
+  aui-proj-appointment:
     build:
       context: ./AUI-PROJ-APPOINTMENT
-    image: aui-proj-appointment:latest
-    container_name: aui-proj-appointments-container
-    ports:
-      - "8081:8081"  # Expose port 8081 for external access
-    networks:
-      - backend
+      dockerfile: Dockerfile
+    restart: always
 
+  aui-proj-doctor:
+    build:
+      context: ./AUI-PROJ-DOCTOR
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      AUI_PROJ_DOCTOR_URL: "http://aui-proj-doctor:8080"
 
-  gateway-app:
+  aui-proj-gateway:
     build:
       context: ./AUI-PROJ-GATEWAY
-    image: aui-proj-gateway:latest
-    container_name: aui-proj-gateway-container
-    ports:
-      - "8084:8084"  # Expose port 8084 for external access to the API Gateway
+      dockerfile: Dockerfile
+    restart: always
     environment:
-      - GATEWAY_PORT=8084
-    depends_on:
-      - doctor-app
-      - appointments-app
-    networks:
-      - backend
+      AUI_PROJ_APPOINTMENT_URL: "http://aui-proj-appointment:8080"
+      AUI_PROJ_DOCTOR_URL: "http://aui-proj-doctor:8080"
+      AUI_PROJ_GATEWAY_HOST: "aui-proj-gateway:8080"
 
-
-networks:
-  backend:
-    driver: bridge
+  aui-proj-angular:
+    build:
+      context: ./AUI-PROJ-ANGULAR
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      API_URL: http://aui-proj-gateway:8080/api
+    ports:
+      - "8087:80"

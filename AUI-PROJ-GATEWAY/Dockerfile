@@ -1,12 +1,29 @@
-FROM eclipse-temurin:17-jdk AS build
+FROM eclipse-temurin:22.0.2_9-jdk
 
-WORKDIR /app
+LABEL org.opencontainers.image.title="aui-proj-gateway"
+LABEL org.opencontainers.image.description="Gateway Service"
+LABEL org.opencontainers.image.authors="Lucjan Gackowski"
+LABEL org.opencontainers.image.version="0.0.1-SNAPSHOT"
 
-# Copy the application JAR file
-COPY target/AUI-PROJECT-GATEWAY-0.0.1-SNAPSHOT.jar app.jar
+LABEL build_version=""
+LABEL maintainer=""
 
-# Expose the port the app will run on
-EXPOSE 8084
+ENV VERSION="0.0.1-SNAPSHOT"
 
-# Run the Spring Boot application
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+ENV SERVER_PORT=8080
+
+ENV SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.H2Dialect
+ENV SPRING_JPA_GENERATE_DDL=true
+ENV SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+
+ENV AUI_PROJ_GATEWAY_HOST=localhost:8080
+
+ENV AUI_PROJ_DOCTOR_URL=http://localhost:8082
+ENV AUI_PROJ_APPOINTMENT_URL=http://localhost:8081
+
+EXPOSE 8080
+
+COPY target/AUI-PROJECT-GATEWAY-0.0.1-SNAPSHOT.jar /opt/aui-proj-gateway/aui-proj-gateway.jar
+
+CMD ["java", "-jar", "/opt/aui-proj-gateway/aui-proj-gateway.jar"]
