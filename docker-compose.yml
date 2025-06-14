@@ -1,36 +1,34 @@
-version: '3'
-
 services:
-  aui-proj-appointment:
+  clinic-appointment:
     build:
-      context: ./AUI-PROJ-APPOINTMENT
+      context: ./appointment
       dockerfile: Dockerfile
     restart: always
 
-  aui-proj-doctor:
+  clinic-doctor:
     build:
-      context: ./AUI-PROJ-DOCTOR
+      context: ./doctor
       dockerfile: Dockerfile
     restart: always
     environment:
-      AUI_PROJ_DOCTOR_URL: "http://aui-proj-doctor:8080"
+      AUI_PROJ_DOCTOR_URL: "http://clinic-doctor:8080"
 
-  aui-proj-gateway:
+  clinic-gateway:
     build:
-      context: ./AUI-PROJ-GATEWAY
+      context: ./gateway
       dockerfile: Dockerfile
     restart: always
     environment:
-      AUI_PROJ_APPOINTMENT_URL: "http://aui-proj-appointment:8080"
-      AUI_PROJ_DOCTOR_URL: "http://aui-proj-doctor:8080"
-      AUI_PROJ_GATEWAY_HOST: "aui-proj-gateway:8080"
+      AUI_PROJ_APPOINTMENT_URL: "http://clinic-appointment:8080"
+      AUI_PROJ_DOCTOR_URL: "http://clinic-doctor:8080"
+      AUI_PROJ_GATEWAY_HOST: "clinic-gateway:8080"
 
-  aui-proj-angular:
+  clinic-frontend:
     build:
-      context: ./AUI-PROJ-ANGULAR
+      context: ./frontend
       dockerfile: Dockerfile
     restart: always
     environment:
-      API_URL: http://aui-proj-gateway:8080/api
+      API_URL: http://clinic-gateway:8080/api
     ports:
       - "8087:80"

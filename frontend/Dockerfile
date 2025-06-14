@@ -1,7 +1,7 @@
 FROM nginx:1.23.3
 
-LABEL org.opencontainers.image.title="aui-proj-angular"
-LABEL org.opencontainers.image.description="Angular Frontend"
+LABEL org.opencontainers.image.title="clinic-frontend"
+LABEL org.opencontainers.image.description="Clinic Frontend Service"
 LABEL org.opencontainers.image.authors="Lucjan Gackowski"
 LABEL org.opencontainers.image.version="0.0.1-SNAPSHOT"
 

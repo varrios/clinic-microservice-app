@@ -1,12 +1,10 @@
 FROM eclipse-temurin:22.0.2_9-jdk
 
-LABEL org.opencontainers.image.title="aui-proj-gateway"
-LABEL org.opencontainers.image.description="Gateway Service"
+LABEL org.opencontainers.image.title="clinic-gateway"
+LABEL org.opencontainers.image.description="Clinic Gateway Service"
 LABEL org.opencontainers.image.authors="Lucjan Gackowski"
 LABEL org.opencontainers.image.version="0.0.1-SNAPSHOT"
 
-LABEL build_version=""
-LABEL maintainer=""
 
 ENV VERSION="0.0.1-SNAPSHOT"
 
@@ -24,6 +22,6 @@ ENV AUI_PROJ_APPOINTMENT_URL=http://localhost:8081
 
 EXPOSE 8080
 
-COPY target/AUI-PROJECT-GATEWAY-0.0.1-SNAPSHOT.jar /opt/aui-proj-gateway/aui-proj-gateway.jar
+COPY target/gateway-0.0.1-SNAPSHOT.jar /opt/clinic-gateway/clinic-gateway.jar
 
-CMD ["java", "-jar", "/opt/aui-proj-gateway/aui-proj-gateway.jar"]
+CMD ["java", "-jar", "/opt/clinic-gateway/clinic-gateway.jar"]

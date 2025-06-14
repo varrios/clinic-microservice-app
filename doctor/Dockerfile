@@ -1,16 +1,14 @@
 FROM eclipse-temurin:22.0.2_9-jdk
 
-LABEL org.opencontainers.image.title="aui-proj-doctor"
-LABEL org.opencontainers.image.description="Doctor Service"
+LABEL org.opencontainers.image.title="clinic-doctor"
+LABEL org.opencontainers.image.description="Clinic Doctor Service"
 LABEL org.opencontainers.image.authors="Lucjan Gackowski"
 LABEL org.opencontainers.image.version="0.0.1-SNAPSHOT"
 
-LABEL build_version=""
-LABEL maintainer=""
 
 ENV VERSION="0.0.1-SNAPSHOT"
 
-ENV SERVER_PORT 8080
+ENV SERVER_PORT=8080
 
 ENV SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.H2Dialect
 ENV SPRING_JPA_GENERATE_DDL=true
@@ -22,6 +20,6 @@ ENV AUI_PROJ_DOCTOR=http://localhost:8081
 
 EXPOSE 8080
 
-COPY target/AUI-PROJECT-APPOINTMENT-0.0.1-SNAPSHOT.jar /opt/aui-proj-doctor/aui-proj-doctor.jar
+COPY target/doctor-0.0.1-SNAPSHOT.jar /opt/clinic-doctor/clinic-doctor.jar
 
-CMD ["java", "-jar", "/opt/aui-proj-doctor/aui-proj-doctor.jar"]
+CMD ["java", "-jar", "/opt/clinic-doctor/clinic-doctor.jar"]
