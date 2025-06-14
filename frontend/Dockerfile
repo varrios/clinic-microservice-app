@@ -14,8 +14,7 @@ ENV API_URL http://localhost:8080/api
 
 EXPOSE 80
 
-ADD dist/aui-proj-angular/browser /usr/share/nginx/html
-ADD dist/aui-proj-angular/prerendered-routes.json /usr/share/nginx/html
-ADD dist/aui-proj-angular/3rdpartylicenses.txt /usr/share/nginx/html
-
+ADD dist/aui-proj-angular/browser /usr/share/nginx/html/
 ADD docker/etc/nginx/templates/ /etc/nginx/templates/
+ADD docker/etc/nginx/nginx.conf /etc/nginx/templates/
+
