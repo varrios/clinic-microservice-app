@@ -1,9 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="local-project-startup" type="CompoundRunConfigurationType">
-    <toRun name="frontend" type="js.build_tools.npm" />
-    <toRun name="appointment" type="SpringBootApplicationConfigurationType" />
-    <toRun name="doctor" type="SpringBootApplicationConfigurationType" />
-    <toRun name="gateway" type="SpringBootApplicationConfigurationType" />
-    <method v="2" />
-  </configuration>
-</component>
